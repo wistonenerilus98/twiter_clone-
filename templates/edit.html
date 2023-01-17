@@ -1,0 +1,21 @@
+{% extends "base.html"%} {% block content %} {% load static %}
+{% load static %}
+<section class="content">
+    <section class="post_form">
+        <form action="/edit/{{post.id}}/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Name" value={{post.name}}>
+            <textarea name="body" placeholder="Tell us anything" value={{post.body}} ></textarea>
+
+            {% if post.image.url %}
+            <img src="{{post.image.url}}" />
+            {% endif %}
+            <input type="file" class="post-img" name="image"/><br/>
+            <input type="button" value="Cancel" />
+            <input type="submit" value="Update" />
+
+        </form>
+    </section>
+</section>
+
+    {% endblock %}
